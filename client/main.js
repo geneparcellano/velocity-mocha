@@ -1,14 +1,20 @@
 Meteor.subscribe('items');
 Template.test.events({
-	'click button.add': function (e, tmpl) {
+	'submit form': function (e, tmpl) {
 		e.preventDefault();
 
 		var name = tmpl.$('.input-new-item').val();
+
+		// Delete Error Message
+		tmpl.$('p.error').fadeOut().remove();
 
 		if (name) {
 			Meteor.call('addItem', name, function(error, results) {
 				if (error) {
 					console.log(error);
+
+					// Show Error
+					tmpl.$('form').append('<p class="error" style="color:red">'+error.reason+'</p>');
 				} else {
 					console.log(results);
 					tmpl.$('.input-new-item').val('');
@@ -31,6 +37,17 @@ Template.test.events({
 				}
 			});
 		}
+	},
+	'click button.delete': function (e, tmpl) {
+		e.preventDefault();
+
+		Meteor.call('deleteItem', this._id, function(error, results) {
+			if (error) {
+				console.log(error);
+			} else {
+				console.log(results);
+			}
+		});
 	}
 });
 
