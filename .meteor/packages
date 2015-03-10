@@ -8,3 +8,4 @@ meteor-platform
 mike:mocha
 accounts-password
 alanning:roles
+accounts-ui
