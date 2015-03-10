@@ -3,7 +3,7 @@ Meteor.publish('items', function() {
 });
 
 Meteor.methods({
-    'addItem': function ( itemName ) {
+    'addItem': function ( itemName ) {       
         var exists = Items.find({'name':itemName}).fetch().length;
 
         if (!exists) {

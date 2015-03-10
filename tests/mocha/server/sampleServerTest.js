@@ -6,7 +6,6 @@ if (!(typeof MochaWeb === 'undefined')){
 			it("should return ID (String)", function(done) {
 				Meteor.call('addItem', 'New Item Name', function(error, result) {
 					if (error) throw error
-
 					id = result;
 				});
 
