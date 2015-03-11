@@ -9,7 +9,7 @@ if (!(typeof MochaWeb === 'undefined')){
 
 					var newName = 'New Item Name';
 
-					Meteor.call('addItem', newName, function(error, result) {
+					Meteor.call('createItem', newName, function(error, result) {
 						if (error) throw error;
 
 						var findItem = Items.find({name:newName}).count();
