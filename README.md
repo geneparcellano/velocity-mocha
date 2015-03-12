@@ -1,4 +1,10 @@
 # velocity-mocha
-Meteorjs testing sample, using Velocity and Mocha.
+Simple Meteorjs app with unit tests, using Velocity and Mocha.
 
-Sample app with basic CRUD functionality. Testing tests server-side CRUD.
+Client tests for the following:
+1. Login
+2. Create
+3. Retrieve
+4. Edit
+5. Delete
+6. Logout
