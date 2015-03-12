@@ -1,23 +1,26 @@
 if (!(typeof MochaWeb === 'undefined')){
 	MochaWeb.testOnly(function(){
 
+		describe("Login", function() {
+			it("should return undefined", function(done) {
+				Meteor.loginWithPassword('gene.parcellano@gmail.com','Password1qaz', function(error) {
+					chai.assert.equal(error, undefined);
+					done();
+				});
+			});
+		});
+
 		describe("Create Item", function() {
 			it("should return ID (String)", function(done) {
+				var newName = 'New Item Name';
 
-				Meteor.loginWithPassword('gene.parcellano@gmail.com','Password1qaz', function(error) {
-					if(error) throw error;
+				Meteor.call('createItem', newName, function(error, result) {
+					if (error) throw error;
 
-					var newName = 'New Item Name';
+					var findItem = Items.find({name:newName}).count();
 
-					Meteor.call('createItem', newName, function(error, result) {
-						if (error) throw error;
-
-						var findItem = Items.find({name:newName}).count();
-
-						chai.assert.equal(findItem, 1);
-						done();
-					});
-
+					chai.assert.equal(findItem, 1);
+					done();
 				});
 			});
 		});
@@ -37,7 +40,7 @@ if (!(typeof MochaWeb === 'undefined')){
 				var id = Items.findOne()._id;
 
 				Meteor.call('updateItem', id, newName, function(error, result) {
-					if (error) throw error
+					if (error) throw error;
 
 					var getName = Items.findOne({ name:newName }).name;
 					chai.assert.equal(getName, newName);
@@ -59,6 +62,15 @@ if (!(typeof MochaWeb === 'undefined')){
 					done();
 				});
 
+			});
+		});
+
+		describe("Logout", function() {
+			it("should return undefined", function(done) {
+				Meteor.logout(function(error) {
+					chai.assert.equal(error, undefined);
+					done();
+				});
 			});
 		});
 	});
