@@ -1,7 +1,7 @@
 # velocity-mocha
 Simple Meteorjs app with unit tests, using Velocity and Mocha.
 
-Client tests for the following:
+Client-side tests:
 
 1. Login
 2. Create
