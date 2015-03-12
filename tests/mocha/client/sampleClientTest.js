@@ -3,7 +3,7 @@ if (!(typeof MochaWeb === 'undefined')){
 
 		describe("Login", function() {
 			it("should return undefined", function(done) {
-				Meteor.loginWithPassword('gene.parcellano@gmail.com','Password1qaz', function(error) {
+				Meteor.loginWithPassword('admin@user.com','Password1qaz', function(error) {
 					chai.assert.equal(error, undefined);
 					done();
 				});
