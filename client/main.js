@@ -9,7 +9,7 @@ Template.test.events({
 		tmpl.$('p.error').fadeOut().remove();
 
 		if (name) {
-			Meteor.call('addItem', name, function(error, results) {
+			Meteor.call('createItem', name, function(error, results) {
 				if (error) {
 					console.log(error);
 
